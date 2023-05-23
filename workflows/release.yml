@@ -1,0 +1,41 @@
+---
+name: Release
+on:
+    push:
+        branches:
+            - release
+
+jobs:
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        steps:
+            - name: "📥 checkout repository"
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: "🔄  Cache node_modules"
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: "🔧 Setup NodeJS 14.19.1"
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16.19.0
+
+            - name: "🔧 Install npm@latest"
+              run: npm i -g npm@latest
+
+            - name: "📦  Install CI dependencies"
+              run: npm run install:ci
+
+            - name: "🚀 Create Release"
+              run: npx semantic-release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
