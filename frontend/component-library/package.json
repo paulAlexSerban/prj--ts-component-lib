@@ -1,0 +1,11 @@
+{
+  "name": "component-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'build script initiated'"
+  },
+  "author": "",
+  "license": "ISC"
+}
