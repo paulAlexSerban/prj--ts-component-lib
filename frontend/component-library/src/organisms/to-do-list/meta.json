@@ -1,0 +1,11 @@
+{
+  "category": "organisms",
+  "componentSlug": "to-do-list",
+  "componentName": "To Do List",
+  "variations": [
+      {
+          "slug": "to-do-list",
+          "name": "To Do List"
+      }
+  ]
+}
