@@ -1,0 +1,47 @@
+{
+    "name": "prj--ts-component-lib",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo 'Error: no test specified'",
+        "lint": "echo 'Error: no lint specified'",
+        "install:ci": "npm ci --omit=dev --ignore-scripts",
+        "install:root": "npm install",
+        "prepare": "husky install",
+        "formats:check": "npx prettier --check .",
+        "formats:write": "npx prettier --write .",
+        "MODULIZE": "SCRIPTS",
+        "mdz:dev:build": "bash modulize.bash --env dev --phase build",
+        "mdz:dev:clean": "bash modulize.bash --env dev --phase clean",
+        "mdz:dev:install": "bash modulize.bash --env dev --phase install"
+    },
+    "author": "Paul Serban",
+    "license": "ISC",
+    "devDependencies": {
+        "@commitlint/cli": "^16.2.4",
+        "@commitlint/config-conventional": "^16.2.4",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^7.0.4",
+        "prettier": "^2.7.1"
+    },
+    "dependencies": {
+        "@semantic-release/changelog": "^6.0.1",
+        "@semantic-release/commit-analyzer": "^9.0.2",
+        "@semantic-release/git": "^10.0.1",
+        "@semantic-release/github": "^8.0.4",
+        "@semantic-release/npm": "^9.0.1",
+        "@semantic-release/release-notes-generator": "^10.0.3",
+        "semantic-release": "^19.0.2"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+        }
+    }
+}
