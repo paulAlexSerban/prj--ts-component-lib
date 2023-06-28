@@ -13,6 +13,7 @@
     "lib": [ /* Specify a set of bundled library declaration files that describe the target runtime environment. */
       "DOM",
       "ES2016",
+      "ES2021",
       "DOM.Iterable",
       "ScriptHost" /* UNLOCK all the core JavaScript features you would basically want ot work with */
     ],
