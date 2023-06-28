@@ -1,0 +1,25 @@
+{
+    "group": "system",
+    "category": "templates",
+    "component": "base",
+    "name": "Base Page Template",
+    "version": "1.0.0",
+    "description": "Base page template to be used by other page templates or to showcase components of the design system.",
+    "author": {
+        "name": "Paul Serban",
+        "email": "paul.alex.serban@gmail.com"
+    },
+    "keywords": ["page", "template", "base"],
+    "variations": [
+        {
+            "slug": "base-template-12-col-flex-grid",
+            "name": "Base Page Template w/ 12 Column Flex Grid",
+            "description": "Base page template with 12 column flex grid."
+        },
+        {
+            "slug": "base-template-typography-mixins",
+            "name": "Base Page Template w/ Typography Mixins",
+            "description": "Base page template with typography mixins."
+        }
+    ]
+}

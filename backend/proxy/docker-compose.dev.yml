@@ -1,0 +1,32 @@
+---
+version: "3.7"
+services:
+
+  # ---------------------------------------------------------------------
+  # | Traefik-Proxy                                                     |
+  # ---------------------------------------------------------------------
+  proxy:
+    image: traefik:latest
+    container_name: proxy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+      start_period: 5s
+    ports:
+      # Exposes port 80 for incomming web requests
+      - 80:80
+      - 443:443
+      # The Web UI port http://0.0.0.0:8080 (enabled by --api.insecure=true)
+      - 8080:8080
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Copies the Let's Encrypt certificate locally for ease of backing up
+      - ./dist/letsencrypt:/letsencrypt
+      - ./dist/openssl:/openssl
+      - ./config/dynamic_conf.yaml:/dynamic_conf.yaml
+      # Mounts the Traefik static configuration inside the Traefik container
+      - ./config/traefik-entrypoints.yml:/etc/traefik/traefik.yml

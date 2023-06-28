@@ -1,0 +1,3 @@
+scripts
+.env
+docker-compose.dev.yml
