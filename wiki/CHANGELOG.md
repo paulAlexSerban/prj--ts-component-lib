@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/paulAlexSerban/prj--ts-component-lib/compare/v1.0.0...v1.0.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **gh actions:** commented unused wrkflow step ([d9c2f05](https://github.com/paulAlexSerban/prj--ts-component-lib/commit/d9c2f050dc060bad81e93a7fd7884e1aaa01ea6f))
+
 # 1.0.0 (2023-06-28)
 
 
