@@ -1,0 +1,83 @@
+name: CI/CD
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        types: [synchronize]
+    workflow_dispatch:
+env:
+    NODE_VERSION: 16.19.0
+    FE_COMPONENT_LIBRARY: frontend/component-library
+    FE_DASHBOARD: frontend/dashboard
+    BASE_URL: ${{ secrets.BASE_URL }}
+    BASE_PATH: ${{ secrets.BASE_PATH }}
+
+jobs:
+  deploy:
+    name: Deploy Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥 checkout repository"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "🔍  Verify Changed Files in ${{ env.FE_COMPONENT_LIBRARY }}"
+        uses: tj-actions/changed-files@v35
+        id: changed-component-library-files
+        with:
+            files: ${{ env.FE_COMPONENT_LIBRARY }}/**/*
+
+      - name: "🔍  Verify Changed Files in ${{ env.FE_DASHBOARD }}"
+        uses: tj-actions/changed-files@v35
+        id: changed-dashboard-files
+        with:
+            files: ${{ env.FE_DASHBOARD }}/**/*
+
+      - name: "🔄  Cache node_modules"
+        uses: actions/cache@v3
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: ${{ runner.os }}-node-
+      
+      - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
+        uses: actions/setup-node@v3
+        with:
+            node-version: ${{ env.NODE_VERSION }}
+
+      - name: "🔧 Install npm@latest"
+        run: npm i -g npm@latest  
+
+
+      - name: "📦  Install Component Library Build dependencies"
+        run: bash modulize.bash -e gh_pages -m component-library -p install 
+
+      - name: "🏗️  Build Frontend Component Library"
+        run: bash modulize.bash -e gh_pages -m component-library -p build
+
+      - name: "🚚  Package Component Library"
+        run: |
+          mkdir -p package/dist/component-library
+          cp -r frontend/component-library/dist/* package/dist/component-library
+
+      - name: "📦  Install Dashboard Build dependencies"
+        run: bash modulize.bash -e gh_pages -m dashboard -p install
+
+      - name: "🏗️  Build Frontend Dashboard"
+        run: bash modulize.bash -e gh_pages -m dashboard -p build
+
+      - name: "🚚  Package Dashboard"
+        run: |
+          mkdir -p package/dist
+          cp -r frontend/dashboard/out/* package/dist
+          touch package/dist/.nojekyll
+          touch package/dist/CNAME
+          echo ${{ env.BASE_URL }} > package/dist/CNAME
+
+      - name: "🚀 Deploy to GitHub Pages"
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: package/dist
