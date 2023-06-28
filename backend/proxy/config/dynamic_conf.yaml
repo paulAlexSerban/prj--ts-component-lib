@@ -1,0 +1,11 @@
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        - certFile: /openssl/dashboard-cert.pem
+          keyFile: /openssl/dashboard-key.pem
+  certificates:
+  - certFile: /openssl/dashboard-cert.pem
+    keyFile: /openssl/dashboard-key.pem
+  - certFile: /openssl/component-library-cert.pem
+    keyFile: /openssl/component-library-key.pem
