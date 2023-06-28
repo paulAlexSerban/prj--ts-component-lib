@@ -6,7 +6,7 @@ PORJECT_AUTHOR=$(node -p "require('./package.json').author")
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
 
-. ./config.env
+. ./.env.development
 
 # Colors for printing messages
 NC='\033[0m' # No Color

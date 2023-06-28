@@ -1,0 +1,20 @@
+{
+    "group": "library",
+    "category": "modules",
+    "component": "to-do-list",
+    "name": "To Do List",
+    "version": "1.0.0",
+    "description": "To Do List",
+    "author": {
+        "name": "Paul Serban",
+        "email": "paul.alex.serban@gmail.com"
+    },
+    "keywords": ["library", "modules", "to-do-list"],
+    "variations": [
+        {
+            "slug": "to-do-list",
+            "name": "To Do List",
+            "description": "To Do List"
+        }
+    ]
+}

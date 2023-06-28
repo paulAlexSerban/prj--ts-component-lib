@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "watch": "export NODE_ENV=development && webpack serve --config webpack.dev.js --hot --progress",
-      "dev": "export NODE_ENV=development && webpack --config webpack.dev.js",
-      "build": "export NODE_ENV=production && webpack --config webpack.prod.js"
+      "watch": "export NODE_ENV=development && webpack --config build/webpack.dev.js --watch --progress --stats-children",
+      "dev": "export NODE_ENV=development && webpack --config build/webpack.dev.js",
+      "build": "export NODE_ENV=production && webpack --config build/webpack.prod.js"
     },
     "author": "",
     "license": "ISC",
