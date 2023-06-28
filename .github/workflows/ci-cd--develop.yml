@@ -57,27 +57,27 @@ jobs:
       - name: "🏗️  Build Frontend Component Library"
         run: bash modulize.bash -e gh_pages -m component-library -p build
 
-      - name: "🚚  Package Component Library"
-        run: |
-          mkdir -p package/dist/component-library
-          cp -r frontend/component-library/dist/* package/dist/component-library
+      # - name: "🚚  Package Component Library"
+      #   run: |
+      #     mkdir -p package/dist/component-library
+      #     cp -r frontend/component-library/dist/* package/dist/component-library
 
-      - name: "📦  Install Dashboard Build dependencies"
-        run: bash modulize.bash -e gh_pages -m dashboard -p install
+      # - name: "📦  Install Dashboard Build dependencies"
+      #   run: bash modulize.bash -e gh_pages -m dashboard -p install
 
-      - name: "🏗️  Build Frontend Dashboard"
-        run: bash modulize.bash -e gh_pages -m dashboard -p build
+      # - name: "🏗️  Build Frontend Dashboard"
+      #   run: bash modulize.bash -e gh_pages -m dashboard -p build
 
-      - name: "🚚  Package Dashboard"
-        run: |
-          mkdir -p package/dist
-          cp -r frontend/dashboard/out/* package/dist
-          touch package/dist/.nojekyll
-          touch package/dist/CNAME
-          echo ${{ env.BASE_URL }} > package/dist/CNAME
+      # - name: "🚚  Package Dashboard"
+      #   run: |
+      #     mkdir -p package/dist
+      #     cp -r frontend/dashboard/out/* package/dist
+      #     touch package/dist/.nojekyll
+      #     touch package/dist/CNAME
+      #     echo ${{ env.BASE_URL }} > package/dist/CNAME
 
-      - name: "🚀 Deploy to GitHub Pages"
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: gh-pages
-          folder: package/dist
+      # - name: "🚀 Deploy to GitHub Pages"
+      #   uses: JamesIves/github-pages-deploy-action@4.1.1
+      #   with:
+      #     branch: gh-pages
+      #     folder: package/dist
