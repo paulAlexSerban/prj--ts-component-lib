@@ -2,7 +2,7 @@
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
 
-source ../config.env
+source ../.env.development
 
 # Parse command-line options
 while getopts ":m:p:e:" opt; do

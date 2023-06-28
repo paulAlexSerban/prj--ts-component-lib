@@ -1,0 +1,40 @@
+---
+name: CD - Release
+on:
+    push:
+        branches:
+            - release
+jobs:
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        env:
+            NODE_VERSION: 16.19.0
+        steps:
+            - name: "📥 checkout repository"
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: "🔄  Cache node_modules"
+              uses: actions/cache@v3
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: ${{ runner.os }}-node-
+
+            - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+
+            - name: "🔧 Install npm@latest"
+              run: npm i -g npm@latest
+
+            - name: "📦  Install CI dependencies"
+              run: npm run install:ci
+
+            - name: "🚀 Create Release"
+              run: npx semantic-release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
