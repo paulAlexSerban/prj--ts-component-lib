@@ -70,5 +70,6 @@ const { log, dir } = console;
 
 
     // ? - You can use the ? operator to check if a variable is null or undefined
+    // OptionalChaining - You can use the ? operator to check if a variable is null or undefined
     form?.addEventListener("submit", handleSubmit);
 })();
