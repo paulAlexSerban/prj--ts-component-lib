@@ -1,0 +1,8 @@
+{{#> templates/base/markup/partials/_base-demo-container title="Google Maps - Random User Address"}}
+
+  <script src="https://maps.googleapis.com/maps/api/js?key={{{envVars 'GOOGLE_MAPS_API_KEY'}}}"></script>
+  {{{feLibs 'library' 'modules' 'maps' 'google-maps-random-user-address' 'all'}}}
+
+  <div class="google-maps-random-user-address__container" id='map'></div>
+
+{{/ templates/base/markup/partials/_base-demo-container}}

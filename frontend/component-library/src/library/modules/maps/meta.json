@@ -1,0 +1,20 @@
+{
+    "group": "library",
+    "category": "modules",
+    "component": "maps",
+    "name": "TMaps",
+    "version": "1.0.0",
+    "description": "Maps",
+    "author": {
+        "name": "Paul Serban",
+        "email": "paul.alex.serban@gmail.com"
+    },
+    "keywords": ["library", "modules", "maps", "google-maps"],
+    "variations": [
+        {
+            "slug": "google-maps-random-user-address",
+            "name": "Google Maps - Random User Address",
+            "description": "Module that on each refresh will generate a random user and and a random company address and will display it on a Google Map."
+        }
+    ]
+}

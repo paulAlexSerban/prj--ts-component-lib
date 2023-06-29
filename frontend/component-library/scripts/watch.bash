@@ -3,7 +3,7 @@
 cd "$(dirname "$0")" || exit
 
 source ../.env.development
-
+source ../.env
 # Parse command-line options
 while getopts ":m:p:e:" opt; do
   case $opt in
@@ -29,7 +29,7 @@ elif [[ $ENV == "gh_pages" ]]; then
 elif [[ $ENV == 'prod' ]]; then
   echo "Builing ${MODULE_NAME} in $ENV mode"
 fi
-
+export GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY
 export ASSETS_PATH="https://s3.eu-central-1.amazonaws.com/assets.prj--js-component-lib"
 
 # function getAssets() {
