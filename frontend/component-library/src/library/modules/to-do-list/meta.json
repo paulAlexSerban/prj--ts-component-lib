@@ -15,6 +15,11 @@
             "slug": "to-do-list",
             "name": "To Do List",
             "description": "To Do List"
+        },
+        {
+            "slug": "drag-n-drop-project-manager",
+            "name": "Drag-n-Drop Project Manager",
+            "description": "Drag-n-Drop Project Manager, with To Do List"
         }
     ]
 }

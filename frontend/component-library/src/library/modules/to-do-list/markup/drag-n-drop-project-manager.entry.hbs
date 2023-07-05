@@ -1,0 +1,38 @@
+{{#> templates/base/markup/partials/_base-demo-container title="Drag-n-Drop - Project Manager"}}
+  {{{feLibs 'library' 'modules' 'to-do-list' 'drag-n-drop-project-manager' 'all'}}}
+
+  <template id="project-input">
+    <form class='drag-n-drop-project-manager__form js-form'>
+      <div class="drag-n-drop-project-manager__form-control js-form-control">
+        <label class="drag-n-drop-project-manager__label" for="title">Title</label>
+        <input class='drag-n-drop-project-manager__input' type="text" id="title" />
+      </div>
+      <div class="drag-n-drop-project-manager__form-control js-form-control">
+        <label class="drag-n-drop-project-manager__label" for="description">Description</label>
+        <textarea class='drag-n-drop-project-manager__textarea' id="description" rows="3"></textarea>
+      </div>
+      <div class="drag-n-drop-project-manager__form-control js-form-control">
+        <label class="drag-n-drop-project-manager__label" for="people">People</label>
+        <input class='drag-n-drop-project-manager__input' type="number" id="people" step="1" min="0" max="5" />
+      </div>
+      <button class="drag-n-drop-project-manager__button" type="submit">ADD PROJECT</button>
+    </form>
+  </template>
+  <template id="single-project">
+    <li draggable="true" class='drag-n-drop-project-manager__projects-list-item'>
+      <h2 class='drag-n-drop-project-manager__projects-list-item-heading'></h2>
+      <h3 class='drag-n-drop-project-manager__projects-list-item-subheading'></h3>
+      <p class='drag-n-drop-project-manager__paragraph'></p>
+    </li>
+  </template>
+  <template id="project-list">
+    <section class="drag-n-drop-project-manager__projects js-projects">
+      <header class="drag-n-drop-project-manager__projects-header">
+        <h2 class='drag-n-drop-project-manager__projects-heading'></h2>
+      </header>
+      <ul class='drag-n-drop-project-manager__projects-list'></ul>
+    </section>
+  </template>
+  <div id="app"></div>
+
+{{/ templates/base/markup/partials/_base-demo-container}}
